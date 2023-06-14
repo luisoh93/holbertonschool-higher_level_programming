@@ -24,7 +24,8 @@ class Square:
     @property
     def size(self):
         """
-        size: size of the square setter validating size is int and >= 0
+        size: size of the square
+        setter validating size is int and >= 0
 
         Raise:
         TyupeError and ValueError
@@ -34,7 +35,8 @@ class Square:
     @size.setter
     def size(self, value):
         """
-        size: size of the square setter validating size is int and >= 0
+        size: size of the square
+        setter validating size is int and >= 0
         
         Raise:
         TypeError and ValueError
