@@ -2,6 +2,8 @@
 """
 Square class definition
 """
+
+
 class Square:
     """
     Square class with private instance attribute size
@@ -22,7 +24,8 @@ class Square:
     @property
     def size(self):
         """
-        size: size of the square setter validating size is int and >= 0
+        size: size of the square
+        setter validating size is int and >= 0
         
         Raise:
         TypeError and ValueError
@@ -32,7 +35,8 @@ class Square:
     @size.setter
     def size(self, value):
         """
-        size: size of the square setter validating size is int and >= 0
+        size: size of the square
+        setter validating size is int and >= 0
 
         Raise:
         TypeError and ValueError
