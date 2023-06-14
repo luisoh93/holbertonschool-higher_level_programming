@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """
 Node Class
+
 creates node obj
 """
+
 
 class Node:
     """
@@ -35,6 +37,12 @@ class Node:
             self.__next_node = value
         else:
             raise TypeError("next_node must be a Node object")
+
+"""
+SinglyLinkedList class
+creats a linkedlist of sorted Node objs and prints
+"""
+
 
 class SinglyLinkedList:
     """
