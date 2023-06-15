@@ -10,8 +10,8 @@ class Square:
     """
     def __init__(self, size=0, position=(0, 0)):
         """
-        Ars:
-        size: size of the square
+        Args:
+            size: size of the square
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
@@ -28,7 +28,7 @@ class Square:
         setter validating size is int and >= 0
         
         Raise:
-        TypeError and ValueError
+            TypeError and ValueError
         """
         return (self.__size)
 
@@ -39,7 +39,7 @@ class Square:
         setter validating size is int and >= 0
 
         Raise:
-        TypeError and ValueError
+            TypeError and ValueError
         """
         if type(value) is not int:
             raise TypeError("size must be an integer")
