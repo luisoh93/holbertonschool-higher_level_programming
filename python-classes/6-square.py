@@ -1,46 +1,43 @@
 #!/usr/bin/python3
-"""
-Square class definition
-"""
+
+
+"""The summary line for a class docstring should fit on one line.
+    
+    If the class has public attributes, they may be documented here
+    in an ``Attributes`` section and follow the same formatting as a
+    function's ``Args`` section. Alternatively, attributes may be documented
+    inline with the attribute's declaration (see __init__ method below).
+
+    Properties created with the ``@property`` decorator should be documented
+    in the property's getter method.
+
+    Attributes:
+        attr1 (str): Description of `attr1`.
+
+    """
 
 
 class Square:
-    """
-    Square class with private instance attribute size
-    """
+    """The summary line for a class docstring should fit on one line."""
+
     def __init__(self, size=0, position=(0, 0)):
-        """
-        Args:
-            size: size of the square
-        """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.size = size
-            self.position = position
+        """The summary line for a class docstring should fit on one line."""
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
-        """
-        size: size of the square
-        setter validating size is int and >= 0
-        
-        Raise:
-            TypeError and ValueError
-        """
-        return (self.__size)
+        """The summary line for a class docstring should fit on one line."""
+        return self.__size
+
+    @property
+    def position(self):
+        """The summary line for a class docstring should fit on one line."""
+        return self.__position
 
     @size.setter
     def size(self, value):
-        """
-        size: size of the square
-        setter validating size is int and >= 0
-
-        Raise:
-            TypeError and ValueError
-        """
+        """The summary line for a class docstring should fit on one line."""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -48,50 +45,27 @@ class Square:
         else:
             self.__size = value
 
-    @property
-    def position(self):
-        """
-        position: gives position of the square
-        """
-        return self.__position
-
     @position.setter
     def position(self, value):
-        """
-        defines position setter values
-        """
-        if self._tuple_(value):
-            self.__position = value
-        elif not self._tuple_(value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-
-    def _tuple_(self, position):
-        """
-        check if it is a tuple and +ive integer
-        """
-        if type(position) is not tuple or len(position) != 2:
-            return False
-        elif type(position[0]) is not int or position[0] < 0:
-            return False
-        elif type(position[1]) is not int or position[1] < 0:
-            return False
+        """The summary line for a class docstring should fit on one line."""
+        str = "position must be a tuple of 2 positive integers"
+        if (type(value) is not tuple or len(value) != 2 or
+                type(value[0]) is not int or
+                type(value[1]) is not int or
+                value[0] < 0 or value[1] < 0):
+                raise TypeError(str)
         else:
-            return True
+            self.__position = value
 
     def area(self):
-        """
-        Returns area of the square instance
-        """
-        return (self.size ** 2)
+        """The summary line for a class docstring should fit on one line."""
+        return (self.__size ** 2)
 
     def my_print(self):
-        """
-        prints to the stdout square with # or empty line if 0
-        """
-        if self.size == 0:
+        if self.__size is 0:
             print()
-            return
-        for a in range(self.position[1]):
-            print()
-        for a in range(self.size):
-            print("{}{}".format(" " * self.position[0], "#" * self.size))
+        else:
+            print('\n' * self.__position[1], end="")
+            for i in range(self.__size):
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)
