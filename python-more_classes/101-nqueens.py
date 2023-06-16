@@ -11,8 +11,8 @@ class Queen:
     Class defined as Queen to solve nQueens problem
     using recursion
     """
-    def can_move(self, x, y, right):
 
+    def can_move(self, x, y, right):
         """
         Function to see if queen can move in the vaild constraint
         column provided
