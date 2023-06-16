@@ -1,62 +1,46 @@
 #!/usr/bin/python3
-"""
-Square class definition
-"""
+
+
+"""Example Google style docstrings."""
 
 
 class Square:
-    """
-    Square class with private instance attribute size
-    """
+    """The summary line for a class docstring should fit on one line."""
 
     def __init__(self, size=0):
-        """
-        Args:
-            size: size of the square
-        """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
+        """The summary line for a class docstring should fit on one line."""
+        self.size = size
+
+    def area(self):
+        """The summary line for a class docstring should fit on one line."""
+        return (self._size * self._size)
 
     @property
     def size(self):
-        """
-        size: size of the square
-        setter validating size is int and >= 0
-
-        Raise:
-            TyupeError and ValueError
-        """
-        return (self.__size)
+        """The summary line for a class docstring should fit on one line."""
+        return self._size
 
     @size.setter
     def size(self, value):
-        """
-        size: size of the square
-        setter validating size is int and >= 0
-        
-        Raise:
-            TypeError and ValueError
-        """
-        if type(value) is not int:
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
+        """The summary line for a class docstring should fit on one line."""
+        if type(value) == int:
+            if value >= 0:
+                self._size = value
+            else:
+                raise ValueError("size must be >= 0")
         else:
-            self.__size = value
-
-    def area(self):
-        """
-        Returns area of the square instance
-        """
-        return (self.size ** 2)
+            raise TypeError("size must be an integer")
 
     def my_print(self):
-        """
-        prints to the stdout square with # or empty line if 0
-        """
-        print("\n".join(["".join(["#" for a in range(self.__size)])
-            for b in range(self.__size)]))
+        """The summary line for a class docstring should fit on one line."""
+        i, j = 0, 0
+        if self._size == 0:
+            print()
+        else:
+            while i < self._size:
+                while j < self._size:
+                    print("#", end="")
+                    j += 1
+                print()
+                j = 0
+                i += 1
