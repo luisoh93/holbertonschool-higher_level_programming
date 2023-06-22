@@ -4,7 +4,7 @@ Defines a class MyList that inherits from list
 """
 
 
-class MyList(list):
+class MyList(list_):
     """
     Class that inherits from list.
 
