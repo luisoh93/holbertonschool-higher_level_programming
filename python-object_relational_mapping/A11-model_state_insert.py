@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-# prints the State object with name input
-
+# adds an State object to database
 
 if __name__ == "__main__":
-    from model_state import Base, State
-    from sys import argv
-    from sqlalchemy.engine.url import URL
-    from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
+    from sqlalchemy import create_engine
+    from model_state import Base, State
+    from sqlalchemy.engine.url import URL
+    from sys import argv
 
     db = {'drivername': 'mysql+mysqldb',
             'host': 'localhost',
@@ -19,11 +18,10 @@ if __name__ == "__main__":
     url = URL(**db)
     engine = create_engine(url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
+
     session = Session(engine)
 
-    sobj = (argv[4], )
-    try:
-        state = session.query(State).filter(State.name == sobj).one_or_none()
-        print("{}".format(state.id))
-    except:
-        print("Not found")
+    state = State(name='Louisiana')
+    session.add(state)
+    session.commit()
+    print(state.id)
