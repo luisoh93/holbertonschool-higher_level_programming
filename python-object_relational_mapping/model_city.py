@@ -1,13 +1,16 @@
 #!/usr/bin/python3
-""" class Model """
-from sqlalchemy import Integer, String, Column, ForeignKey
-from model_state import Base
+""" Defines City ORM object"""
+
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class City(Base):
-
-    __tablename__ = 'cities'
-
-    id = Column(Integer, primary_key=True)
+    """City ORM class"""
+    __tablename__ = "cities"
+    id = Column(Integer, primary_key=True, nullable=False,
+                autoincrement=True, unique=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'))
+    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
