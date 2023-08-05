@@ -21,10 +21,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    city = City(name='San Francisco')
-    state = State(name='California', cities=[city])
-
-    session.add(state)
-    session.add(city)
-    session.commit()
+    for state in session.query(State):
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("    {}: {}".format(city.id, city.name))
     session.close()
