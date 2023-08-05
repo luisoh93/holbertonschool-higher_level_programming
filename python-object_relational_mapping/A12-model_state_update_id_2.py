@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-# adds an State object to database
+# changes the name of a State object
+
 
 if __name__ == "__main__":
-    from sqlalchemy.orm import Session
-    from sqlalchemy import create_engine
-    from model_state import Base, State
+    from sqlalchemy.engine import create_engine
     from sqlalchemy.engine.url import URL
+    from sqlalchemy.orm import Session
+    from model_state import Base, State
     from sys import argv
 
     db = {'drivername': 'mysql+mysqldb',
@@ -20,8 +21,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-
-    state = State(name='Louisiana')
-    session.add(state)
+    row = session.query(State).filter(State.id == 2).first()
+    row.name = 'New Mexico'
     session.commit()
-    print(state.id)
