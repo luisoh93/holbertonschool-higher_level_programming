@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-# changes the name of a State object
-
+# delete all State objects with a name containing letter a
 
 if __name__ == "__main__":
     from sqlalchemy.engine import create_engine
     from sqlalchemy.engine.url import URL
     from sqlalchemy.orm import Session
     from model_state import Base, State
-    from sys import argv
 
     db = {'drivername': 'mysql+mysqldb',
             'host': 'localhost',
@@ -21,6 +19,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    row = session.query(State).filter(State.id == 2).first()
-    row.name = 'New Mexico'
+    for query in session.query(State).filter(State.name.like('%a%')).all():
+        session.delete(query)
     session.commit()
