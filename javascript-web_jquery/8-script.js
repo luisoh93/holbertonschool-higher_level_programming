@@ -1,7 +1,7 @@
-const url = 'https://swapi-api.hbtn.io/api/films/?format=json';
-
-$.getJSON(url, function (data) {
-	$.each(data.results, function (i, movie) {
-		$('UL#list_movies').append('<li>' + movie.title + '</li>');
-	});
+const $ = window.$;
+$.get('https://swapi.co/api/films/?format=json', function (data, textStatus) {
+  const res = data.results;
+  for (let i = 0; i < res.length; i++) {
+    $('UL#list_movies').append('<li>' + res[i].title + '</li>');
+  }
 });
